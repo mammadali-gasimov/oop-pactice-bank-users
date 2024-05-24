@@ -28,7 +28,7 @@ public class Main {
     public static void createUser() {
         User user = getUser();
         bank.addUser(user);
-    };
+    }
 
     public static void updateUser() {
         int id = getId();
@@ -37,7 +37,7 @@ public class Main {
         if (isUpdated) {
             System.out.println("User was updated successfully!");
         }
-    };
+    }
 
     public static void removeUser() {
         int id = getId();
@@ -50,23 +50,23 @@ public class Main {
     public static void showAllUsers() {
         User[] users = bank.getAllUsers();
         if (users.length > 0) {
-            for (User user : bank.users) {
+            for (User user : bank.getUsers()) {
                 System.out.println(user.toString());
             }
         } else {
             System.out.println("No users were found!");
         }
-    };
+    }
 
     public static void showUserById() {
         int id = getId();
         User user = bank.getUserById(id);
         if (user != null) {
-            System.out.println(user.toString());
+            System.out.println(user);
         } else {
             System.out.println("User was not found!");
         }
-    };
+    }
 
     public static int getId() {
         System.out.println("Enter user id:");
@@ -74,7 +74,7 @@ public class Main {
         while (id <= 0) {
             System.out.println("Wrong user id! Enter user id:");
             id = scanner.nextInt();
-        };
+        }
         return id;
     }
 

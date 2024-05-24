@@ -1,12 +1,20 @@
 public class Bank {
-    public User[] users = new User[5];
+    private User[] users = new User[5];
     private static int userId = 0;
+
+    public User[] getUsers() {
+        return users;
+    }
+
+    public void setUsers(User[] users) {
+        this.users = users;
+    }
 
     public void addUser(User user) {
         for (int i = 0; i < users.length; i++) {
             if (users[i] != null) {
                 users[i] = user;
-                users[i].id = ++userId;
+                users[i].setId(++userId);
                 return;
             }
         }
@@ -16,7 +24,7 @@ public class Bank {
             newList[i] = users[i];
         }
         newList[users.length] = user;
-        newList[users.length].id = ++userId;
+        newList[users.length].setId(++userId);
         users = newList;
         newList = null;
     }
@@ -24,7 +32,7 @@ public class Bank {
     public boolean updateUserById(int id, User user) {
         boolean isUpdated = false;
         for (int i = 0; i < users.length; i++) {
-            if (users[i] != null && users[i].id == id) {
+            if (users[i] != null && users[i].getId() == id) {
                 users[i] = user;
                 isUpdated = true;
             }
@@ -36,7 +44,7 @@ public class Bank {
         boolean isRemoved = false;
 
         for (int i = 0; i < users.length; i++) {
-            if (users[i] != null && users[i].id == id) {
+            if (users[i] != null && users[i].getId() == id) {
                 User[] newList = new User[users.length - 1];
                 for (int j = 0; j < users.length; j++) {
                     if (j != i) {
@@ -79,7 +87,7 @@ public class Bank {
         User user = null;
 
         for (User bankUser : users) {
-            if (bankUser != null && bankUser.id == id) {
+            if (bankUser != null && bankUser.getId() == id) {
                 user = bankUser;
                 break;
             }
